@@ -7,17 +7,36 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 
 Complete the function so that it will print out total cost after tax. Make sure to **call the function** afterwards.
 
-```swift
+```
+swift
 let itemCost = 45.0
 let nyTax = 0.08775
 
-func totalWithTax() {
-
+func totalWithTax(itemCost: Double, tax: Double) -> Double {
+let taxAddedToItemCost = (itemCost * tax)
+var total = taxAddedToItemCost + itemCost
+return total
 }
+
+print(totalWithTax(itemCost: 45.0, tax: 0.08775))
+
+
 ```
 
 Then, modify the function you implemented to have a return type of `Int`, and use an external name that looks more readable. Function calls should look something like "total cost of the item after tax"
+```
+let itemCost = 45.0
+let nyTax = 0.08775
 
+func totalWithTax(itemCost: Double, tax: Double) -> String {
+let taxAddedToItemCost = (itemCost * tax)
+var total = Double((Int(taxAddedToItemCost + itemCost) * 100 ) / 100)
+
+return "total cost after tax is \(total)"
+}
+
+print(totalWithTax(itemCost: 45.0, tax: 0.08775))
+```
 ## Question 2
 
 Convert the the following if/else statement below into function with a `String` return type.
@@ -31,7 +50,25 @@ if todaysTemperature <= 40 {
     print("It's really warm.")
 } else {
     print("Weather is moderate.")
+    
 }
+
+let todaysTemperature = 72
+
+func whatTodaysTempIsLike(currentTemp: Int) -> String {
+if currentTemp <= 40 {
+return "Its \(currentTemp), so its cold out."
+}
+else if currentTemp >= 85 {
+return "Its \(currentTemp), so its really warm. "
+}
+else {
+return "Its \(currentTemp), so the weather is moderate."
+}
+}
+
+print(whatTodaysTempIsLike(currentTemp: todaysTemperature))
+
 ```
 
 
@@ -46,7 +83,19 @@ Example:
 Input: `min2(a:1, b:2)`
 
 Output: `1`
+```
+func minimumOf2 (a: Int, b: Int) -> Int {
+if a < b {
+return a
+} else {
+return b
+}
+}
 
+var min2 = (1, 2)
+
+print(minimumOf2(a: 1, b: 2))
+```
 
 ## Question 4
 
@@ -60,11 +109,24 @@ Input: `lastDigit(12345)`
 
 Output: `5`
 
+```
+func lastDigit(_ number: Int) -> Int {
+let lastnumber = number % 10
+return lastnumber
+}
+print(lastDigit(12345))
+```
 
 ## Question 5
 
 Write a function that takes in any two positive integers and return the sum.
-
+```
+func sumOfTwoPositiveNumbers(a:Int, b:Int) -> String {
+let sum = a + b
+return "the sum of \(a) and \(b) is \(sum)"
+}
+print(sumOfTwoPositiveNumbers(a: 7, b: 9))
+```
 
 ## Question 6
 
@@ -79,14 +141,54 @@ Write a function takes in any number grade and returns a corresponding letter gr
 | 65 - 69 | D |
 | Below 65 | F |
 
+```
+func letterGradeEquivalentfor(_ numberGrade:Int)  {
+let myGrade = numberGrade
+switch myGrade {
+case 100:
+print("Letter grade for \(numberGrade) is A+ ")
+case 90..<100 :
+print("Letter grade for \(numberGrade) is A")
+case 80..<90 :
+print("Letter grade for \(numberGrade) is B")
+case 70..<80:
+print("Letter grade for \(numberGrade) is C")
+case 65..<70:
+print("Letter grade for \(numberGrade) is D")
+case 0..<65:
+print("Letter grade for \(numberGrade) is E")
+default:
+print("Incomplete")
+
+}
+
+}
+letterGradeEquivalentfor(96)
+//prints Letter grade for 96 is A
+```
 
 ## Question 7
 
 Make a calculator function that takes in three parameters (two numbers and one operator) and returns the answer of the operation.
 
 Operator parameter: (+, -, x, /)
+```
+func simpleOperationOfTwoInts(a:Int, operationType:Character, c: Int) {
+if operationType == Character("\u{2214}") {
+print(a + c)
+} else if operationType == "\u{2216}"{
+print(a - c)
+} else if operationType == "\u{2215}"{
+print(a / c)
+} else if operationType == "\u{2217}" {
+print(a * c)
+}
+
+}
+simpleOperationOfTwoInts(a: 9, operationType: "\u{2214}"  , c: 6)
 
 
+```
 ## Question 8
 
 Write a function so that it will print out **total cost after tip.**
